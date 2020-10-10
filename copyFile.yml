@@ -1,0 +1,12 @@
+-
+  name: Copy package to Tomcat
+  hosts: tomcatserver
+  vars:
+  - jarname: spring-boot-0.0.1-SNAPSHOT.war
+  - target: /var/lib/jenkins/workspace/jenkins-pipeline/gs-spring-boot-master/target
+  - tomcatHome: /opt/tomcat/latest
+  tasks:
+    - name: Copy file
+      copy:
+        src: "{{ target }}/{{ jarname }}"
+        dest: "{{ tomcatHome }}/webapps/"
